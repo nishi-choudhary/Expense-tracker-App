@@ -1,5 +1,5 @@
 import React from "react";
-import bargraph from "../../assets/images/bargraph.jpg"; // Make sure this path is correct relative to this file
+import bargraph from "../../assets/images/graph.jpg"; // Make sure this path is correct relative to this file
 import { LuTrendingUpDown } from "react-icons/lu"; // 
 
 // ... rest of AuthLayout.jsx code ...
@@ -47,8 +47,8 @@ const AuthLayout = ({ children }) => {
         /> */}
         <img
    // src={bargraph} // Remove this
-   src="/images/bargraph.jpg" // Use absolute path from public dir
-   alt="Bar Graph"
+   src="../../assets/images/graph.jpg" // Use absolute path from public dir
+   alt="Graph"
    className="w-64 lg:w-[90%] absolute bottom-10 shadow-lg shadow-blue-400/15 z-10"
  />
       </div>
