@@ -19,6 +19,24 @@ const SignUp = () => {
     const navigate= useNavigate();
 
     const handleSignUp = async (e) => {
+        e.preventDefault();;
+
+        let profileImageUrl="";
+        if (!fullname) {
+            setError("Please enter your full name.");
+            return;
+        }
+        if (!validateEmail(email)) {
+            setError("Please enter a valid email address.");
+            return;
+        }  
+        
+        if (!password) {    
+            setError("Please enter the password");
+            return;
+        }
+        setError("");
+
 
     }
 
@@ -30,6 +48,7 @@ const SignUp = () => {
             <form onSubmit={handleSignUp}>
                 <ProfilePhotoSelelect image={profilePic} setImage={setProfilePic} />    
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+                    
                     <Input 
                         value={fullname} 
                         onChange={({target}) => setFullname(target.value)} 
@@ -54,6 +73,16 @@ const SignUp = () => {
                     />
                     </div>
                 </div>
+                {error && <p className="text-red-500 text-xs pb-2.5">{error}</p>}
+                                    <button type="submit" className="btn-primary">SIGN UP</button>
+                               
+                
+                                <p className="text-[13px] text-slate-800 mt-3">
+                                    Already have an account{" "}
+                                    <Link className="font-medium text-primary underline" to="/signUp">Sign Up</Link>
+                                    Login
+                                </p>
+                
                 </form>
         </div>
 
