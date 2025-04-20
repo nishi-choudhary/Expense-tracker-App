@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import AuthLayout from '/src/components/layouts/AuthLayout.jsx';
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/inputs/input";
+// import { validateEmail } from "../../utils/validation";
+import { validateEmail } from "../../utils/helper";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -12,7 +14,15 @@ const Login = () => {
     
     const handleLogin = async (e) => {
         e.preventDefault();
-        setError(null);
+        if (!validateEmail(email)) {
+            setError("Please enter a valid email address.");
+            return;
+        }
+        if (!password) {
+            setError("Please enter the password");
+            return;
+        }
+        setError("");
         try {
             const response = await fetch("http://localhost:5000/api/v1/auth/login", {
                 method: "POST",
